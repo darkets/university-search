@@ -23,14 +23,19 @@ class Application
                 continue;
             }
 
-            foreach ($universities->get() as $university) {
-                /** @var University $university */
-                echo "Name: {$university->getName()}" . PHP_EOL;
-                foreach ($university->getDomains() as $domain) {
-                    echo "Domain: $domain" . PHP_EOL;
-                }
-                echo '---------------' . PHP_EOL;
+            $this->displayUniversities($universities);
+        }
+    }
+
+    private function displayUniversities(UniversityCollection $universities): void
+    {
+        foreach ($universities->get() as $university) {
+            /** @var University $university */
+            echo "Name: {$university->getName()}" . PHP_EOL;
+            foreach ($university->getDomains() as $domain) {
+                echo "Domain: $domain" . PHP_EOL;
             }
+            echo '---------------' . PHP_EOL;
         }
     }
 }
